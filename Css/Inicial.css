@@ -11,7 +11,6 @@ body {
     background-image: url("../Images/BackgroundInicial.png");
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
     background-color: rgb(255, 94, 0);
     
 }
@@ -22,7 +21,7 @@ body {
   
   .lista a {
     font-size: 25px;
-    color: white;
+    color: aqua;
     margin-left: 50px;
     font-weight: 700;
     transition: all 0.55s ease-in-out;
@@ -33,11 +32,11 @@ body {
   .Principal {
     font-size: 30px;
     font-weight: 1000;
-    color: white;
+    color: aqua;
   }
 
   .lista a:hover{
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid aqua;
   background-color: rgba(66, 62, 62, 0.8);
 }
 
@@ -52,7 +51,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
-    border: solid 1px white;
+    border: solid 1px aqua;
   }
 
   section {
@@ -62,7 +61,7 @@ header {
 
 #Titulo {
   font-size: 30px;
-  color:white;
+  color:aqua;
   font-weight: bold;
   margin-top: 14%;
   margin-left: 50px;
