@@ -10,8 +10,6 @@ function Cadastrar() {
             Escolhido = Genero[i].value
         }
     }
-
-    if (document.getElementById("Guardar").checked){
         let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
 
         listaUser.push(
@@ -24,7 +22,6 @@ function Cadastrar() {
         )
 
         localStorage.setItem('listaUser', JSON.stringify(listaUser))
-    }
 
 window.location.href="login.html"
 }

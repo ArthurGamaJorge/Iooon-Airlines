@@ -20,7 +20,7 @@ p {
 }
 fieldset{
     width: 400px;
-    height: 600px;
+    height: 500px;
     border: 1px solid aqua;
     background: linear-gradient(0.25turn, rgb(97, 97, 97), rgb(52, 52, 52));
     margin: auto;
