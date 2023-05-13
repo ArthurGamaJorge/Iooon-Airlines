@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="Css/cadastro.css">
+    <link rel="icon" href="Images/icon.png">
+    <script src="./JavaScript/JavaScript.js"> </script>
+
+    <title>Cadastro Produtos</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Cadastro</legend> <br>
+            <label>Nome: </label> <br>
+            <input type="text" name="Nome" id="nome" required> <br><br>
+
+            <label>E-mail: </label> <br>
+            <input type="Email" name="Email" id="Email" required> <br><br>
+
+            <label>Data nascimento: </label> <br>
+            <input type="date" name="Data" id="Data" required> <br><br>
+
+            <label>Gênero:</label> <br>
+            <input type="radio" name="Genero" id="Genero" required> Masculino
+            <input type="radio" name="Genero" id="Genero" required> Feminino
+            <input type="radio" name="Genero" id="Genero" required> Não binário
+            <input type="radio" name="Genero" id="Genero" required> Outro <br><br>
+
+            <label>Senha: </label> <br>
+            <input type="password" name="Senha" id="Senha" required> <br><br>
+
+            <label>Guardar login? </label> <br>
+            <input type="checkbox" id="Guardar">Sim <br><br>
+
+            <input type="submit" value="Enviar" onclick="Cadastrar()">
+            <input type="reset" value="Apagar"> <br><br><br>
+            
+            <a href="index.html">Home Page</a>
+
+        </fieldset> <br><br>
+
+        <button onclick="MudarTema()" type="button" id="button">Mudar tema</button>
+
+
+    </form>
+</body>
+</html>

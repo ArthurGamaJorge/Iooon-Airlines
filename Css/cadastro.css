@@ -1,0 +1,134 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+}
+legend {
+    font-size: 22px;
+}
+body {
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+}
+p {
+    color: red;
+    font-style: italic;
+}
+fieldset{
+    width: 400px;
+    height: 600px;
+    border: 1px solid aqua;
+    background: linear-gradient(0.25turn, rgb(97, 97, 97), rgb(52, 52, 52));
+    margin: auto;
+    padding: 10px 10px;
+    filter: drop-shadow(10px 5px 10px aqua);
+    transition: width .5s, transform .5s ease-in-out;
+}
+
+fieldset:hover {
+    width: 440;
+    transform: translateX(5px);
+    border: 3px solid aqua;
+}
+
+input {
+    margin-top: 3px;
+}
+input, button {
+    background-color: rgb(92, 91, 91);
+    color: aqua;
+    border: 1px solid aqua;
+    width: 300px;
+    height: 25px;
+}
+
+input[type="submit"], input[type="reset"] {
+    width: 80px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover, #Entrar:hover, a:hover {
+    background-color: rgb(126, 124, 124);
+    filter: drop-shadow(10px 5px 10px aqua);
+}
+
+input[type="submit"]:active, input[type="reset"]:active{
+    width: 70px;
+}
+
+a {
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid aqua;
+    color: aqua;
+    font-size: 30px;
+}
+
+#Genero, #Guardar {
+    width: 10px;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#button, #Entrar{
+    text-align: center;
+    color: rgb(2, 197, 2);
+    border: 2px solid rgb(0, 203, 0);
+    font-size: 25px;
+    background-color: rgb(32,100,116);
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#button:hover {
+    filter: drop-shadow(3px 3px 3px rgb(1, 167, 1));
+}
+
+#Entrar {
+    color: aqua;
+    border-color: aqua;
+    background-color: transparent;
+}
+
+input[type="button"] {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+}
+
+#Idade {
+    width: 75px;
+}
+
+.TemaClaro {
+    background-color: rgb(205, 205, 205);
+    color: black;
+}
+
+
+.TemaClaro fieldset{
+    background: linear-gradient(0.25turn, rgb(206, 206, 206), rgb(153, 153, 153));
+    filter: drop-shadow(10px 5px 10px black);
+    border-color: black;
+}
+
+.TemaClaro input, .TemaClaro a {
+    background-color: rgb(193, 193, 193);
+    color: black;
+    border: 1px solid black;
+}
+.TemaClaro #Entrar {
+    color: black;
+    border-color: black;
+}
+.TemaClaro input[type="submit"]:hover, .TemaClaro input[type="reset"]:hover, .TemaClaro #Entrar:hover, .TemaClaro a:hover {
+    background-color: rgb(153, 153, 153);
+    filter: drop-shadow(10px 5px 10px white);
+}
