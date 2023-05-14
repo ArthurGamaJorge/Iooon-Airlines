@@ -26,10 +26,6 @@ function Cadastrar() {
 window.location.href="login.html"
 }
 
-function Listagem() {
-    window.location.href = "Listagem.html"
-}
-
 function MudarTema() {
       var body = document.body;
            

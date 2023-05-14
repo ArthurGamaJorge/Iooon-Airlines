@@ -8,11 +8,10 @@
 }
 
 body {
-    background-image: url("../Images/BackgroundInicial.png");
+    background-image: url("../Images/BackgroundInicial.png"); background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: rgb(255, 94, 0);
-    
+    overflow-y: hidden;
 }
 
 .lista {
@@ -57,14 +56,14 @@ header {
   section {
     display: flex;
     justify-content: center;
+    margin: auto;
   }
 
 #Titulo {
   font-size: 30px;
   color:aqua;
   font-weight: bold;
-  margin-top: 14%;
-  margin-left: 50px;
+  margin-top: 270px;
 }
 
 img {
@@ -84,16 +83,31 @@ img {
   }
   #Titulo {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 0;
   }
   img {
     width: 300px;
   }
   #Imagem {
     text-align: center;
-    width: 100%;
   }
   body {
     background: url("../Images/backgroundInicialmobile.png");
+  }
+  .lista a {
+    margin-left: 35px;
+  }
+}
+
+@media(max-width: 300px){
+  img {
+  width: 250px;
+}
+  .lista a {
+    margin-left: 25px;
+    font-size: 20px;
+  }
+  h1, h2, .Principal {
+    font-size: 23px;
   }
 }

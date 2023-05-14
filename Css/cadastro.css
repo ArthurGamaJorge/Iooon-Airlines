@@ -8,7 +8,10 @@ legend {
     font-size: 22px;
 }
 body {
-    background-color: black;
+    background: url("../Images/ViagemEscuro.png");
+    background-size: cover; background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     color: aqua;
     font-weight: bold;
     font-size: 17px;
@@ -23,7 +26,8 @@ fieldset{
     width: 400px;
     height: 500px;
     border: 1px solid aqua;
-    background: linear-gradient(0.25turn, rgb(97, 97, 97), rgb(52, 52, 52));
+    border-radius: 20px;
+    background: linear-gradient(0.25turn, rgb(97, 97, 97, 0.7), rgb(52, 52, 52, 0.8));
     margin: auto;
     padding: 10px 10px;
     filter: drop-shadow(10px 5px 10px aqua);
@@ -109,13 +113,16 @@ input[type="button"] {
 }
 
 .TemaClaro {
-    background-color: rgb(205, 205, 205);
+    background: url("../Images/Viagem.png");
+    background-size: cover; background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     color: black;
 }
 
 
 .TemaClaro fieldset{
-    background: linear-gradient(0.25turn, rgb(206, 206, 206), rgb(153, 153, 153));
+    background: linear-gradient(0.25turn, rgb(206, 206, 206, 0.7), rgb(153, 153, 153, 0.8));
     filter: drop-shadow(10px 5px 10px black);
     border-color: black;
 }
@@ -132,4 +139,13 @@ input[type="button"] {
 .TemaClaro input[type="submit"]:hover, .TemaClaro input[type="reset"]:hover, .TemaClaro #Entrar:hover, .TemaClaro a:hover {
     background-color: rgb(153, 153, 153);
     filter: drop-shadow(10px 5px 10px white);
+}
+
+@media(max-width: 700px) {
+    fieldset {
+        width: 300px;
+    }
+    body {
+        font-size: 15px;
+    }
 }

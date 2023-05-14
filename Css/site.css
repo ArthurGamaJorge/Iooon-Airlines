@@ -24,12 +24,12 @@ p {
 }
 
 .Card {
-    width: calc(40% - 10px);
+    width: calc(45% - 20px);
     height: 400px;
     background: linear-gradient(0.25turn, rgb(97, 97, 97), rgb(52, 52, 52));
     border-radius: 20px;
     border: 2px solid;
-    margin-right: 30px;
+    margin-right: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
     text-align: center;
@@ -145,6 +145,9 @@ p {
 @media(max-width: 600px) {
     .Imagem {
         height: 200px;
+    }
+    .Card {
+        height: 320px;
     }
     .Card h1 {
         font-size: 17px;
