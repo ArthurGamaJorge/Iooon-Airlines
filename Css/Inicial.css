@@ -54,22 +54,19 @@ header {
   }
 
   section {
+    margin-top: 10px;
     display: flex;
-    justify-content: center;
-    margin: auto;
   }
 
 #Titulo {
-  font-size: 30px;
+  font-size: 20px;
   color:aqua;
   font-weight: bold;
-  margin-top: 270px;
 }
 
 img {
-  width: 500px;
+  width: 80px;
   height: auto;
-  margin-top: 100px;
 
 }
 
@@ -77,37 +74,33 @@ img {
   section {
     display: block;
     justify-content: center;
+    margin-top: 50px;
   }
-  h1, h2 {
-    font-size: 30px;
-  }
-  #Titulo {
+  #Titulo, #Imagem {
     text-align: center;
-    margin-top: 0;
-  }
-  img {
-    width: 300px;
-  }
-  #Imagem {
-    text-align: center;
+    font-size: 15px;
   }
   body {
     background: url("../Images/backgroundInicialmobile.png");
   }
   .lista a {
-    margin-left: 35px;
+    margin-left: 15px;
+    font-size: 25px;
+  }
+  .Principal {
+    margin-right: 15px;
+    font-size: 35px;
   }
 }
 
 @media(max-width: 300px){
-  img {
-  width: 250px;
-}
-  .lista a {
-    margin-left: 25px;
-    font-size: 20px;
+  h1, h2{
+    font-size: 15px;
   }
-  h1, h2, .Principal {
-    font-size: 23px;
+  .Principal {
+    font-size: 25px;
+  }
+  .lista a {
+    font-size: 20px;
   }
 }
