@@ -26,20 +26,6 @@ function Cadastrar() {
 window.location.href="login.html"
 }
 
-function MudarTema() {
-      var body = document.body;
-           
-      body.classList.toggle("TemaClaro");
-      let button = document.getElementById('button');
-      
-      if (button.innerHTML == "Tema Claro") {
-         button.innerHTML = "Tema Escuro";
-         
-      } else {
-         button.innerHTML = "Tema Claro"
-      }
-   }
-  
 function irHome() {
     window.location.href = "index.html";
 }

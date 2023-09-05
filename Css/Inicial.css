@@ -1,3 +1,11 @@
+:root{
+  --principal-color: #FFA500;
+  --secondary-dark: #2467F1;
+  --secondary-light: #2CA6D4;
+  --light: #E8E8E8;
+  --dark: #212121;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -8,10 +16,8 @@
 }
 
 body {
-    background-image: url("../Images/BackgroundInicial.png"); background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow-y: hidden;
+    background-color: var(--light);
+    color: black;
 }
 
 .lista {
@@ -19,8 +25,8 @@ body {
   }
   
   .lista a {
-    font-size: 25px;
-    color: aqua;
+    font-size: 40px;
+    color: var(--principal-color);
     margin-left: 50px;
     font-weight: 700;
     transition: all 0.55s ease-in-out;
@@ -29,18 +35,28 @@ body {
   }
 
   .Principal {
-    font-size: 30px;
+    font-size: calc(3vmax + 20px);
     font-weight: 1000;
-    color: aqua;
+    color: var(--principal-color);
   }
 
-  .lista a:hover{
-  border-bottom: 2px solid aqua;
-  background-color: rgba(66, 62, 62, 0.8);
+  button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  #tema {
+    width: 40px;
+  }
+
+  #aHover:hover{
+  background-color: rgb(232, 232, 232);
+  filter: drop-shadow(5px 5px 5px var(--principal-color));
 }
 
 header {
-    background-color: rgb(33, 30, 30, 0.9);
+    background-color: var(--light);
     position: fixed;
     right: 0;
     top: 0;
@@ -50,57 +66,175 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
-    border: solid 1px aqua;
+    border-bottom: 2px solid var(--dark);
+    filter: drop-shadow(0px 5px 5px var(--dark));
   }
 
-  section {
-    margin-top: 10px;
-    display: flex;
-  }
-
-#Titulo {
-  font-size: 20px;
-  color:aqua;
-  font-weight: bold;
-}
-
-img {
-  width: 80px;
+#icone {
+  width: calc(3vmax + 20px);
   height: auto;
-
 }
 
-@media(max-width: 750px){
-  section {
+.Main {
+  display: grid;
+  grid-template-columns: repeat(2, 3fr);
+  justify-content: center;
+  margin-top: calc(4vmax + 70px);
+  padding: 10vh;
+  height: 100vh;
+}
+
+.Main h1 {
+  font-size: calc(4.5vmax + 30px);
+  text-align: center;
+}
+
+#IOOON{
+  color: var(--secondary-light)
+}
+
+#Airlines{
+  color: var(--secondary-dark)
+}
+
+.Main p{
+  font-size: calc(1.5vmax + 9px);
+}
+
+#ImagemCentral{
+  margin-left:  10vw;
+  width: calc(25vmax + 100px);
+}
+
+#seta {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  width: 60px;
+  background-color: var(--secondary-dark);
+  border-radius: 40px;
+  transition: all 0.5s ease-in-out;
+}
+
+#seta:hover{
+  cursor: pointer;
+  transform: translateY(20px);
+}
+
+.ContainerGeral {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(20vmax + 100px);
+  height: 400px;
+  background-color: var(--dark);
+  border-radius: 20px;
+  border: 2px solid;
+  margin-top: 20px;
+}
+
+.card p {
+  color: white;
+  font-size: 30px;
+  background-color: var(--dark);
+  bottom: 0;
+  border-radius: 20px 20px 0px 0px;
+  padding: 10px
+}
+
+.Imagem {
+  height: 100%;
+  border-radius: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#Imagem1 {
+  background-image: url("../Images/Verão.jpeg");
+}
+
+#Imagem2 {
+  background-image: url("../Images/Tempestade.jpg");
+}
+
+#Imagem3 {
+  background-image: url("../Images/RioJaneiro.jpg");
+}
+
+footer {
+  background-color: var(--principal-color);
+  color: var(--secondary-dark);
+  font-size: calc(0.5vmax + 10px);
+  display: flex;
+  padding: 0px 40px 0px 40px;
+}
+
+footer a {
+  color: var(--secondary-light);
+}
+
+#creditos {
+  position: absolute;
+  right: 40px;
+}
+
+.Dark-theme, .Dark-theme header {
+  background-color: var(--dark);
+  color: white;
+}
+
+.Dark-theme header {
+  border-bottom: 2px solid var(--light);
+  filter: drop-shadow(0px 5px 5px var(--light));
+}
+
+#IconeMenu {
+  width: 50px;
+  z-index: 11;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  #IconeMenu {
     display: block;
-    justify-content: center;
-    margin-top: 50px;
   }
-  #Titulo, #Imagem {
-    text-align: center;
-    font-size: 15px;
+  #seta {
+    display: none;
   }
-  body {
-    background: url("../Images/backgroundInicialmobile.png");
+  .lista {
+    position: absolute;
+    top: 100%;
+    right: -120%;
+    width: 300px;
+    height: 40vh;
+    display: flex;
+    padding: 50px 20px;
+    flex-direction: column;
+    align-items: center;
+    background: var(--dark);
+    transition: all 0.55s ease;
   }
-  .lista a {
-    margin-left: 15px;
-    font-size: 25px;
+  .lista a,
+  .lista button {
+    margin-left: 0;
+    display: block;
+    margin: 5px 0;
   }
-  .Principal {
-    margin-right: 15px;
-    font-size: 35px;
+  .lista.open {
+    right: 0;
+    height: 300px;
+    width: 200px;
+    border-radius: 30px;
+    border: solid 2px var(--secondary-light);
+    filter: drop-shadow(5px 5px 10px var(--secondary-light));
   }
-}
-
-@media(max-width: 300px){
-  h1, h2{
-    font-size: 15px;
-  }
-  .Principal {
-    font-size: 25px;
-  }
-  .lista a {
-    font-size: 20px;
+  .Main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
 }

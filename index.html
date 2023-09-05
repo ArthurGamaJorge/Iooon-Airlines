@@ -6,27 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Css/Inicial.css">
     <link rel="icon" href="./Images/IOOON logo.png">
+    <script src="./JavaScript/inicialScript.js"></script>
 
     <title>Home page</title>
-</head>5
+</head>
 <body>
     <header>
-        <a href="#" class="Principal">Home</a>
+        <a href="#" class="Principal"> <img src="Images\IOOON logo.png" id="icone"> Home</a>
         <ul class="lista">
-            <li> <a href="cadastro.html">Cadastro</a> </li>
-            <li> <a href="login.html">Login</a> </li>
+            <li> <a href="cadastro.html" id="aHover">Cadastro</a> </li>
+            <li> <a href="login.html" id="aHover">Login</a> </li>
+            <li> <a> <button onclick="MudarTema()"> <img src="./Images/Dark theme.png" id="tema"> </button></a></li>
         </ul>
-    </header> <br><br><br><br><br>
+
+        <div class="Bx bx-menu" id="IconeMenu">
+            <img src="./Images/Menu.png" id="IconeMenu">
+        </div>
+    </header> <br><br><br><br>
+
+    <section class="Main">
+
+        
+        <div>
+            <span> <h1 id="IOOON">IOOON</h1><h1 id="Airlines">Airlines</h1> </span>
+            <p>A IOOON Airlines - A forma mais rápida e segura de ir a qualquer lugar! Cadastre-se e embarque para a melhor experiência da sua vida com a IOOON Airlines</p>
+        </div>
+
+        <img src="./Images/Airplane.png" id="ImagemCentral">
+
+        <img src="./Images/Seta.png" id="seta">
+
+        
+    </section>
 
     <section>
-    <div id="Imagem">
-        <img src="./Images/IOOON logo.png">
-    </div>
-    <div id="Titulo">
-        <h1>Nós tornamos suas viagens inesqueciveis!</h1>
-        <h2>ION - passagens aéreas</h2>
-    </div>
-    </section>
+        <div class="ContainerGeral">
+
+            <div class="card">
+                <div class="Imagem" id="Imagem1">
+                    <p>Temporada de verão inicia e promoção especial de 20% a qualquer passagem chega</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="Imagem" id="Imagem2">
+                    <p>Forte tempestade chega em São Paulo - voos adiantados em 4 horas</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="Imagem" id="Imagem3">
+                    <p>Conheça melhor Rio de Janeiro, o estado com maior número de destinos </p>
+                </div>
+            </div>
+
+        </div>
+    </section> <br><br>
+
+    <footer>
+        <p>&copy IOOON Airlines </p>
+        <p id="creditos">Feito por <a href="https://github.com/ArthurGamaJorge" target="_blank">Arthur Gama Jorge</a></p>
+
+    </footer>
+
     
 </body>
 </html>

@@ -12,44 +12,95 @@
 </head>
 <body>
 
-    <h1 id="Titulo">VIAGENS</h1>
+    <header>
+        <a href="index.html" class="Principal"> <img src="Images\IOOON logo.png" id="icone"> Home</a>
+        <ul class="lista">
+            <li> <a> <button onclick="MudarTema()"> <img src="./Images/Dark theme.png" id="tema"> </button></a></li>
+        </ul>
+
+    </header> <br><br><br><br><br><br><br><br><br><br>
+    
+    <div id="Alta">
+        <h1 id="Titulo">EM ALTA</h1>
 
     <div class="ContainerGeral">
 
         <div class="Card">
-            <div class="Imagem Imagem1"></div>
+            <div class="Imagem" id="Imagem1"></div>
             <h1>Rio de Janeiro</h1> <br>
             <p>Preço São Paulo - Rio: R$300</p>
         </div>
 
         <div class="Card">
-            <div class="Imagem Imagem2"></div>
+            <div class="Imagem" id="Imagem2"></div>
             <h1>Fortaleza</h1> <br>
             <p>Preço São Paulo - Fortaleza: R$1100</p>
         </div>
 
         <div class="Card">
-            <div class="Imagem Imagem3"></div>
+            <div class="Imagem" id="Imagem3"></div>
             <h1>Brasilia</h1> <br>
             <p>Preço São Paulo - Brasilia: R$400</p>
         </div>
 
         <div class="Card">
-            <div class="Imagem Imagem4"></div>
+            <div class="Imagem" id="Imagem4"></div>
             <h1>Manaus</h1> <br>
             <p>Preço São Paulo - Manaus: R$1300</p>
         </div>
 
         <div class="Card">
-            <div class="Imagem Imagem5"></div>
+            <div class="Imagem" id="Imagem5"></div>
             <h1>Bahia</h1> <br>
             <p>Preço São Paulo - Bahia: R$800</p>
         </div>
     </div>
 
-    <div id="Botão">
-    <button onclick="MudarTema()" type="button" id="button">Mudar tema</button>
+    <br><br><br>
     </div>
+
+    <br><br><br><br><br>
+
+<div id="Barato">
+    <h1 id="Titulo">MAIS BARATO</h1>
+
+    <div class="ContainerGeral">
+
+        <div class="Card">
+            <div class="Imagem" id="Imagem6"></div>
+            <h1>Porto seguro</h1> <br>
+            <p>Preço São Paulo - Bahia: R$270</p>
+        </div>
+
+        <div class="Card">
+            <div class="Imagem" id="Imagem7"></div>
+            <h1>Arraial do Cabo</h1> <br>
+            <p>Preço São Paulo - Rio: R$150</p>
+        </div>
+
+        <div class="Card">
+            <div class="Imagem" id="Imagem8"></div>
+            <h1>Sana</h1> <br>
+            <p>Preço São Paulo - Rio: R$150</p>
+        </div>
+
+        <div class="Card">
+            <div class="Imagem" id="Imagem9"></div>
+            <h1>Ouro Preto</h1> <br>
+            <p>Preço São Paulo - Minas Gerais: R$200</p>
+        </div>
+
+    </div> <br><br><br>
+</div>
+    <br><br><br>
+    
+    <footer>
+        <p>&copy IOOON Airlines </p>
+        <p id="creditos">Feito por <a href="https://github.com/ArthurGamaJorge" target="_blank">Arthur Gama Jorge</a></p>
+    </footer>
+
+    <script src="./JavaScript/inicialScript.js"></script>
+    
     
 </body>
 </html>

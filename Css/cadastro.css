@@ -1,77 +1,89 @@
+:root{
+    --principal-color: #FFA500;
+    --secondary-dark: #2467F1;
+    --secondary-light: #2CA6D4;
+    --light: #E8E8E8;
+    --dark: #212121;
+  }
+  
 * {
     padding: 0;
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: none;
 }
-legend {
-    font-size: 22px;
+
+label {
+    font-size: calc(0.7vmax + 5px);;
 }
+
+legend {
+    font-size: calc(1.5vmax + 5px);
+}
+
 body {
-    background: url("../Images/ViagemEscuro.png");
-    background-size: cover; background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    color: aqua;
+    background-color: var(--secondary-dark);
+    color: var(--principal-color);
     font-weight: bold;
     font-size: 17px;
     text-align: center;
-    overflow-y: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
 p {
     color: red;
     font-style: italic;
 }
+
 fieldset{
-    width: 400px;
-    height: 500px;
-    border: 1px solid aqua;
+    width: calc(25vmax + 10px);
+    height: calc(10vmax + 300px);
+    border: 1px solid var(--principal-color);
     border-radius: 20px;
-    background: linear-gradient(0.25turn, rgb(97, 97, 97, 0.7), rgb(52, 52, 52, 0.8));
+    background: linear-gradient(0.25turn, var(--secondary-light), var(--secondary-dark));
     margin: auto;
     padding: 10px 10px;
-    filter: drop-shadow(10px 5px 10px aqua);
+    filter: drop-shadow(10px 5px 10px var(--principal-color));
     transition: width .5s, transform .5s ease-in-out;
+    scale: 1.5;
 }
 
 fieldset:hover {
-    width: 440;
     transform: translateX(5px);
-    border: 3px solid aqua;
+    border: 3px solid var(--principal-color);
 }
 
 input {
-    margin-top: 3px;
-    font-size: 17px;
+    font-size: calc(0.7vmax + 5px);
 }
 input, button {
-    background-color: rgb(92, 91, 91);
-    color: aqua;
-    border: 1px solid aqua;
-    width: 300px;
-    height: 25px;
+    background-color: var(--secondary-dark);
+    color: var(--principal-color);
+    border: 1px solid var(--principal-color);
+    width: calc(15vmax + 60px);
 }
 
 input[type="submit"], input[type="reset"] {
-    width: 80px;
+    width: calc(5vmax + 30px);
     border-radius: 5px;
     margin-right: 10px;
 }
 
 input[type="submit"]:hover, input[type="reset"]:hover, #Entrar:hover, a:hover {
     background-color: rgb(126, 124, 124);
-    filter: drop-shadow(10px 5px 10px aqua);
+    filter: drop-shadow(10px 5px 10px var(--principal-color));
 }
 
-input[type="submit"]:active, input[type="reset"]:active{
-    width: 70px;
-}
+
 
 a {
-    width: 150px;
+    width: calc(2vmax + 40px);
     border-radius: 5px;
-    border: 1px solid aqua;
-    color: aqua;
+    border: 1px solid var(--principal-color);
+    color: var(--principal-color);
     font-size: 30px;
 }
 
@@ -84,69 +96,23 @@ a {
 
 #button, #Entrar{
     text-align: center;
-    color: rgb(2, 197, 2);
-    border: 2px solid rgb(0, 203, 0);
+    color: var(--principal-color);
+    border: 2px solid var(--principal-color);
     font-size: 25px;
-    background-color: rgb(32,100,116);
-    width: 200px;
-    height: 40px;
+    background-color: var(--light);
     border-radius: 5px;
 }
 
 #button:hover {
-    filter: drop-shadow(3px 3px 3px rgb(1, 167, 1));
+    filter: drop-shadow(3px 3px 3px var(--principal-color));
 }
 
 #Entrar {
-    color: aqua;
-    border-color: aqua;
+    color: var(--principal-color);
+    border-color: var(--principal-color);
     background-color: transparent;
-}
-
-input[type="button"] {
-    width: 200px;
-    height: 40px;
-    font-size: 20px;
 }
 
 #Idade {
     width: 75px;
-}
-
-.TemaClaro {
-    background: url("../Images/Viagem.png");
-    background-size: cover; background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    color: black;
-}
-
-
-.TemaClaro fieldset{
-    background: linear-gradient(0.25turn, rgb(206, 206, 206, 0.7), rgb(153, 153, 153, 0.8));
-    filter: drop-shadow(10px 5px 10px black);
-    border-color: black;
-}
-
-.TemaClaro input, .TemaClaro a {
-    background-color: rgb(193, 193, 193);
-    color: black;
-    border: 1px solid black;
-}
-.TemaClaro #Entrar {
-    color: black;
-    border-color: black;
-}
-.TemaClaro input[type="submit"]:hover, .TemaClaro input[type="reset"]:hover, .TemaClaro #Entrar:hover, .TemaClaro a:hover {
-    background-color: rgb(153, 153, 153);
-    filter: drop-shadow(10px 5px 10px white);
-}
-
-@media(max-width: 700px) {
-    fieldset {
-        width: 300px;
-    }
-    body {
-        font-size: 15px;
-    }
 }
