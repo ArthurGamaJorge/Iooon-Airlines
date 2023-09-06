@@ -52,7 +52,8 @@ body {
 
   #aHover:hover{
   background-color: rgb(232, 232, 232);
-  filter: drop-shadow(5px 5px 5px var(--principal-color));
+  box-shadow: 15px 15px 20px -15px var(--principal-color);    
+  border: 1px solid var(--principal-color)
 }
 
 header {
@@ -204,6 +205,11 @@ footer a {
 
 .Dark-theme #Noticias {
   box-shadow: 0px 5px 10px var(--light);
+}
+
+.Dark-theme  #aHover:hover{
+  background-color: rgb(32, 32, 32);
+  box-shadow: 15px 15px 20px -15px var(--principal-color);    
 }
 
 #IconeMenu {
