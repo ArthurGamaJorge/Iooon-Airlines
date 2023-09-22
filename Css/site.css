@@ -67,7 +67,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
-    border-bottom: 2px solid var(--dark);
     filter: drop-shadow(0px 5px 5px var(--dark));
   }
 
@@ -82,10 +81,6 @@ header {
     scroll-snap-type: x mandatory;
     margin-left: 20px;
     margin-right: 20px;
-}
-
-.Card p {
-    font-size: 18px;
 }
 
 #Titulo {
@@ -177,7 +172,7 @@ header {
 }
 
 #Alta, #Barato {
-    box-shadow: 0px 5px 20px var(--dark);
+    box-shadow: 0px 3px 20px var(--dark);
 }
 
 footer {
@@ -185,7 +180,7 @@ footer {
     color: var(--secondary-dark);
     font-size: calc(0.5vmax + 10px);
     display: flex;
-    padding: 0px 40px 0px 40px;
+    padding: 5px 40px 5px 40px;
   }
   
   footer a {
@@ -204,10 +199,9 @@ footer {
   }
   
 .Dark-theme #Alta, .Dark-theme #Barato {
-    box-shadow: 0px 5px 10px var(--light);
+    box-shadow: 0px 2px 10px var(--light);
 }
 
 .Dark-theme header {
-    border-bottom: 2px solid var(--light);
-    filter: drop-shadow(0px 5px 5px var(--light));
+    filter: drop-shadow(0px 3px 10px var(--light));
   }

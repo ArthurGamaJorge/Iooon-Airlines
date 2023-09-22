@@ -67,8 +67,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
-    border-bottom: 2px solid var(--dark);
-    filter: drop-shadow(0px 5px 5px var(--dark));
+    filter: drop-shadow(0px 3px 10px var(--dark));
   }
 
 #icone {
@@ -130,9 +129,9 @@ header {
 
 .card {
   width: calc(20vmax + 100px);
-  height: 400px;
+  height: calc(15vmax + 80px);
   background-color: var(--dark);
-  border-radius: 20px;
+  border-radius: 1vmax;
   border: 2px solid;
   margin-top: 20px;
 }
@@ -140,15 +139,15 @@ header {
 .card p {
   color: white;
   font-size: 30px;
-  background-color: var(--dark);
+  background-color: rgb(33, 33, 33, 0.8);
   bottom: 0;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: calc(1vmax - 2px) calc(1vmax - 2px) 0px 0px;
   padding: 10px
 }
 
 .Imagem {
   height: 100%;
-  border-radius: 20px;
+  border-radius: calc(1vmax - 2px);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -171,7 +170,7 @@ footer {
   color: var(--secondary-dark);
   font-size: calc(0.5vmax + 10px);
   display: flex;
-  padding: 0px 40px 0px 40px;
+  padding: 5px 40px 5px 40px;
 }
 
 footer a {
@@ -183,7 +182,7 @@ footer a {
   right: 40px;
 }
 #Noticias {
-  box-shadow: 0px 5px 10px var(--dark);
+  box-shadow: 0px 2px 10px var(--dark);
   text-align: center;
 }
 
@@ -199,12 +198,11 @@ footer a {
 }
 
 .Dark-theme header {
-  border-bottom: 2px solid var(--light);
-  filter: drop-shadow(0px 5px 5px var(--light));
+  filter: drop-shadow(0px 3px 10px var(--light));
 }
 
 .Dark-theme #Noticias {
-  box-shadow: 0px 5px 10px var(--light);
+  box-shadow: 0px 2px 10px var(--light);
 }
 
 .Dark-theme  #aHover:hover{
@@ -236,8 +234,11 @@ footer a {
     padding: 50px 20px;
     flex-direction: column;
     align-items: center;
-    background: var(--dark);
+    background: var(--light);
     transition: all 0.55s ease;
+  }
+  .Dark-theme .lista{
+    background: var(--dark);
   }
   .lista a,
   .lista button {
@@ -251,7 +252,7 @@ footer a {
     width: 200px;
     border-radius: 30px;
     border: solid 2px var(--secondary-light);
-    filter: drop-shadow(5px 5px 10px var(--secondary-light));
+    filter: drop-shadow(2px 2px 10px var(--secondary-light));
   }
   .Main {
     grid-template-columns: repeat(1, 1fr);
