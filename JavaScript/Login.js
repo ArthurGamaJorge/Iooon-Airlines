@@ -1,6 +1,4 @@
 var form = document.getElementById("formulario");
-function handleForm(event) { event.preventDefault(); } 
-form.addEventListener('submit', handleForm);
 
 function Direcionar() {
     const logins = localStorage.getItem("listaUser")
