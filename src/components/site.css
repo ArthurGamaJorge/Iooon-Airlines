@@ -136,39 +136,39 @@ header {
 }
 
 #Imagem1 {
-    background-image: url("../Images/RioJaneiro.jpg");
+    background-image: url("../assets/RioJaneiro.jpg");
 }
 
 #Imagem2 {
-    background-image: url("../Images/Fortaleza.jpg");
+    background-image: url("../assets/Fortaleza.jpg");
 }
 
 #Imagem3 {
-    background-image: url("../Images/Brasilia.png");
+    background-image: url("../assets/Brasilia.png");
 }
 
 #Imagem4 {
-    background-image: url("../Images/Manaus.jpg");
+    background-image: url("../assets/Manaus.jpg");
 }
 
 #Imagem5 {
-    background-image: url("../Images/Bahia.jpg")
+    background-image: url("../assets/Bahia.jpg")
 }
 
 #Imagem6 {
-    background-image: url("../Images/Porto\ Seguro.jpg")
+    background-image: url("../assets/Porto Seguro.jpg")
 }
 
 #Imagem7 {
-    background-image: url("../Images/Arraial\ do\ cabo.jpeg")
+    background-image: url("../assets/Arraial do cabo.jpeg")
 }
 
 #Imagem8 {
-    background-image: url("../Images/Sana.jpg")
+    background-image: url("../assets/Sana.jpg")
 }
 
 #Imagem9 {
-    background-image: url("../Images/Ouro\ preto.jpeg")
+    background-image: url("../assets/Ouro preto.jpeg")
 }
 
 #Alta, #Barato {

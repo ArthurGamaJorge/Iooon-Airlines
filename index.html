@@ -1,86 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <meta name="description" content="Site fícticio de uma companhia aérea feito por Arthur Gama Jorge">
-    
-        <meta property="og:title" content="Iooon Airlines"/>
-        <meta property="og:description" content="Site fícticio de uma companhia aérea feito por Arthur Gama Jorge" />
-        <meta property="og:image" content="images/Icone.ico"/>
-    
-        <link rel="stylesheet" href="./Css/Inicial.css">
-        <link rel="icon" href="./Images/favicon.ico">
-        <script src="./JavaScript/inicialScript.js"></script>
-    
-        <title>Iooon Airlines</title>
-    </head>
-
-<body>
-    <header>
-        <a href="#" class="Principal"> <img src="Images\IOOON logo.png" id="icone"> Home</a>
-        <ul class="lista">
-            <li> <a href="cadastro.html" id="aHover">Cadastro</a> </li>
-            <li> <a href="login.html" id="aHover">Login</a> </li>
-            <li> <a> <button onclick="MudarTema()"> <img src="./Images/Dark theme.png" id="tema"> </button></a></li>
-        </ul>
-
-        <div class="Bx bx-menu" id="IconeMenu">
-            <img src="./Images/Menu.png" id="IconeMenu">
-        </div>
-    </header> <br><br><br><br>
-
-    <section class="Main">
-
-        
-        <div>
-            <span> <h1 id="IOOON">IOOON</h1><h1 id="Airlines">Airlines</h1> </span>
-            <p>A IOOON Airlines - A forma mais rápida e segura de ir a qualquer lugar! Cadastre-se e embarque para a melhor experiência da sua vida com a IOOON Airlines</p>
-        </div>
-
-        <img src="./Images/Airplane.png" id="ImagemCentral">
-
-        <img src="./Images/Seta.png" id="seta">
-
-        
-    </section>
-
-    <section id="Noticias">
-        <br>
-        <h1 id="titulo">Últimas notícias</h1>
-        <div class="ContainerGeral">
-
-            <div class="card">
-                <div class="Imagem" id="Imagem1">
-                    <p>Temporada de verão inicia e promoção especial de 20% a qualquer passagem chega</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="Imagem" id="Imagem2">
-                    <p>Forte tempestade chega em São Paulo - voos adiantados em 4 horas</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="Imagem" id="Imagem3">
-                    <p>Conheça melhor Rio de Janeiro, o estado com maior número de destinos </p>
-                </div>
-            </div>
-
-        </div>
-        <br><br><br>
-    </section> 
-    <br><br><br>
-
-    <footer>
-        <p>&copy IOOON Airlines </p>
-        <p id="creditos">Feito por <a href="https://github.com/ArthurGamaJorge" target="_blank">Arthur Gama Jorge</a></p>
-
-    </footer>
-
-    
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/IOOON logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iooon Airlines</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/App.jsx"></script>
+  </body>
 </html>

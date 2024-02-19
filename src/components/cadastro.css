@@ -1,27 +1,12 @@
-:root{
-    --principal-color: #FFA500;
-    --secondary-dark: #2467F1;
-    --secondary-light: #2CA6D4;
-    --light: #E8E8E8;
-    --dark: #212121;
-  }
-  
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-}
-
-label {
+.Cadastro label {
     font-size: calc(0.7vmax + 5px);;
 }
 
-legend {
+.Cadastro legend {
     font-size: calc(1.5vmax + 5px);
 }
 
-body {
+.Cadastro {
     background-color: var(--secondary-dark);
     color: var(--principal-color);
     font-weight: bold;
@@ -33,12 +18,12 @@ body {
     transform: translate(-50%, -50%);
 }
 
-p {
+.Cadastro p {
     color: red;
     font-style: italic;
 }
 
-fieldset{
+.Cadastro fieldset{
     width: calc(25vmax + 10px);
     height: calc(10vmax + 300px);
     border: 1px solid var(--principal-color);
@@ -51,35 +36,35 @@ fieldset{
     scale: 1.5;
 }
 
-fieldset:hover {
+.Cadastro fieldset:hover {
     transform: translateX(5px);
     border: 3px solid var(--principal-color);
 }
 
-input {
+.Cadastro input {
     font-size: calc(0.7vmax + 5px);
 }
-input, button {
+.Cadastro input, .Cadatro button {
     background-color: var(--secondary-dark);
     color: var(--principal-color);
     border: 1px solid var(--principal-color);
     width: calc(15vmax + 60px);
 }
 
-input[type="submit"], input[type="reset"] {
+.Cadastro input[type="submit"], .Cadastro [type="reset"] {
     width: calc(5vmax + 30px);
     border-radius: 5px;
     margin-right: 10px;
 }
 
-input[type="submit"]:hover, input[type="reset"]:hover, #Entrar:hover, a:hover {
+.Cadastro input[type="submit"]:hover, input[type="reset"]:hover, #Entrar:hover, .Cadastro a:hover {
     background-color: rgb(126, 124, 124);
     filter: drop-shadow(10px 5px 10px var(--principal-color));
 }
 
 
 
-a {
+.Cadastro a {
     width: calc(2vmax + 40px);
     border-radius: 5px;
     border: 1px solid var(--principal-color);
@@ -87,14 +72,14 @@ a {
     font-size: 30px;
 }
 
-#Genero, #Guardar {
+.Cadastro #Genero, #Guardar {
     width: 10px;
     font-size: 15px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
-#button, #Entrar{
+.Cadastro #button, #Entrar{
     text-align: center;
     color: var(--principal-color);
     border: 2px solid var(--principal-color);
@@ -103,16 +88,16 @@ a {
     border-radius: 5px;
 }
 
-#button:hover {
+.Cadastro #button:hover {
     filter: drop-shadow(3px 3px 3px var(--principal-color));
 }
 
-#Entrar {
+.Cadastro #Entrar {
     color: var(--principal-color);
     border-color: var(--principal-color);
     background-color: transparent;
 }
 
-#Idade {
+.Cadastro #Idade {
     width: 75px;
 }

@@ -15,16 +15,16 @@
     text-decoration: none;
 }
 
-body {
+.Home body {
     background-color: var(--light);
     color: black;
 }
 
-.lista {
+.Home .lista {
     display: flex;
   }
   
-  .lista a {
+  .Home .lista a {
     font-size: 40px;
     color: var(--principal-color);
     margin-left: 50px;
@@ -34,29 +34,29 @@ body {
     justify-content: center;
   }
 
-  .Principal {
+  .Home .Principal {
     font-size: calc(3vmax + 20px);
     font-weight: 1000;
     color: var(--principal-color);
   }
 
-  button{
+  .Home button{
     border: none;
     background-color: transparent;
     cursor: pointer;
   }
 
-  #tema {
+  .Home #tema {
     width: 40px;
   }
 
-  #aHover:hover{
+.Home #aHover:hover{
   background-color: rgb(232, 232, 232);
   box-shadow: 15px 15px 20px -15px var(--principal-color);    
   border: 1px solid var(--principal-color)
 }
 
-header {
+.Home header {
     background-color: var(--light);
     position: fixed;
     right: 0;
@@ -70,12 +70,12 @@ header {
     filter: drop-shadow(0px 3px 10px var(--dark));
   }
 
-#icone {
+  .Home #icone {
   width: calc(3vmax + 20px);
   height: auto;
 }
 
-.Main {
+.Home .Main {
   display: grid;
   grid-template-columns: repeat(2, 3fr);
   justify-content: center;
@@ -84,29 +84,29 @@ header {
   height: 100vh;
 }
 
-.Main h1 {
+.Home .Main h1 {
   font-size: calc(4.5vmax + 30px);
   text-align: center;
 }
 
-#IOOON{
+.Home #IOOON{
   color: var(--secondary-light)
 }
 
-#Airlines{
+.Home #Airlines{
   color: var(--secondary-dark)
 }
 
-.Main p{
+.Home .Main p{
   font-size: calc(1.5vmax + 9px);
 }
 
-#ImagemCentral{
+.Home #ImagemCentral{
   margin-left:  10vw;
   width: calc(25vmax + 100px);
 }
 
-#seta {
+.Home #seta {
   position: absolute;
   right: 5%;
   bottom: 5%;
@@ -116,18 +116,18 @@ header {
   transition: all 0.5s ease-in-out;
 }
 
-#seta:hover{
+.Home #seta:hover{
   cursor: pointer;
   transform: translateY(20px);
 }
 
-.ContainerGeral {
+.Home .ContainerGeral {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.card {
+.Home .card {
   width: calc(20vmax + 100px);
   height: calc(15vmax + 80px);
   background-color: var(--dark);
@@ -136,7 +136,7 @@ header {
   margin-top: 20px;
 }
 
-.card p {
+.Home .card p {
   color: white;
   font-size: calc(1vmax + 7.5px);
   background-color: rgb(33, 33, 33, 0.8);
@@ -145,7 +145,7 @@ header {
   padding: 10px
 }
 
-.Imagem {
+.Home .Imagem {
   height: 100%;
   border-radius: calc(1vmax - 2px);
   background-size: cover;
@@ -153,41 +153,57 @@ header {
   background-position: center center;
 }
 
-#Imagem1 {
-  background-image: url("../Images/Verão.jpeg");
+.Home #Imagem1 {
+  background-image: url("../assets/Verão.jpeg");
 }
 
-#Imagem2 {
-  background-image: url("../Images/Tempestade.jpg");
+.Home #Imagem2 {
+  background-image: url("../assets/Tempestade.jpg");
 }
 
-#Imagem3 {
-  background-image: url("../Images/RioJaneiro.jpg");
+.Home #Imagem3 {
+  background-image: url("../assets/RioJaneiro.jpg");
 }
 
-footer {
+.Home footer {
   background-color: var(--principal-color);
   color: var(--secondary-dark);
   font-size: calc(0.5vmax + 10px);
   display: flex;
   padding: 5px 40px 5px 40px;
+  width: 100%;
 }
 
-footer a {
+.Home footer a {
   color: var(--secondary-light);
 }
 
-#creditos {
+.Home #creditos {
   position: absolute;
   right: 40px;
 }
-#Noticias {
+.Home #Noticias {
   box-shadow: 0px 2px 10px var(--dark);
   text-align: center;
 }
 
-#titulo {
+.Home #titulo {
   font-size: calc(2vmax + 12px);
+}
+
+#logout img{
+  width: 20px;
+}
+
+#logout{
+  position: fixed;
+  padding: 0.5%;
+  left: 5%;
+  bottom: 5%;
+  border-radius: 50%;
+  background-color: #2467F1;
+  display: flex;
+  align-items: center;
 }
 
 
