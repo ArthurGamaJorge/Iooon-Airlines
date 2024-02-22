@@ -92,6 +92,16 @@ header {
     font-size: calc(0.7vmax + 10px);
   }
 
+  .formViagem input{
+    border: 2px solid var(--principal-color)
+  }
+
+  #change{
+    display: flex;
+    align-items: center;
+    filter: invert(65%) sepia(68%) saturate(2689%) hue-rotate(2deg) brightness(105%) contrast(106%);
+  }
+
   .itinerarios{
     border: 1px solid var(--light);
     padding: 5%;
@@ -113,8 +123,22 @@ header {
     position: relative;
   }
 
-  #iconAviao{
+  .card h2{
+    align-items: center;
+    display: flex;
+  }
+
+  #change{
+    width: calc(1vmax + 10px);
+  }
+
+  #iconAirline{
     width: calc(4vmax + 10px);
+  }
+
+  #iconAviao{
+    width: calc(2vmax + 10px);
+    margin-left: 20px;
   }
 
   #preço{

@@ -10,10 +10,8 @@ function Conteudo() {
   const [origem, setOrigem] = useState("");
   const [destino, setDestino] = useState("");
   const [dataPartida, setDataPartida] = useState("");
-  const [resultadosAutoCompleteOrigem, setResultadosAutoCompleteOrigem] =
-    useState([]);
-  const [resultadosAutoCompleteDestino, setResultadosAutoCompleteDestino] =
-    useState([]);
+  const [resultadosAutoCompleteOrigem, setResultadosAutoCompleteOrigem] = useState([]);
+  const [resultadosAutoCompleteDestino, setResultadosAutoCompleteDestino] = useState([]);
   const [itinerarios, setItinerarios] = useState([]);
 
   const fazerSolicitacaoAutoCompleteOrigem = async () => {
@@ -26,7 +24,7 @@ function Conteudo() {
         },
       });
 
-      setResultadosAutoCompleteOrigem(response.data.data.slice(0, 5)); // Assumindo que data é um array de objetos
+      setResultadosAutoCompleteOrigem(response.data.data.slice(0, 5));
     } catch (error) {
       console.error(error);
     }
@@ -42,7 +40,7 @@ function Conteudo() {
         },
       });
 
-      setResultadosAutoCompleteDestino(response.data.data.slice(0, 5)); // Assumindo que data é um array de objetos
+      setResultadosAutoCompleteDestino(response.data.data.slice(0, 5));
     } catch (error) {
       console.error(error);
     }
@@ -64,13 +62,13 @@ function Conteudo() {
     let origemId = null;
     let destinoId = null;
 
-    for (var i = 0; i < resultadosAutoCompleteOrigem.length; i++) {
+    for (let i = 0; i < resultadosAutoCompleteOrigem.length; i++) {
       if (resultadosAutoCompleteOrigem[i].presentation.title === origem) {
         origemId = resultadosAutoCompleteOrigem[i].presentation.id;
       }
     }
 
-    for (var i = 0; i < resultadosAutoCompleteDestino.length; i++) {
+    for (let i = 0; i < resultadosAutoCompleteDestino.length; i++) {
       if (resultadosAutoCompleteDestino[i].presentation.title === destino) {
         destinoId = resultadosAutoCompleteDestino[i].presentation.id;
       }
@@ -97,13 +95,27 @@ function Conteudo() {
 
     try {
       const response = await axios.request(options);
-      const itineraries = response.data.data; // Verifique a estrutura da resposta e ajuste conforme necessário
-      console.log(itineraries);
-      setItinerarios(itineraries);
+      const itineraries = response.data.data.itineraries; 
 
       if (itineraries.length === 0) {
         alert("Não há viagens nesse dia :(");
+        return;
       }
+
+      const filteredItineraries = [];
+      const pricesSet = new Set();
+
+      for (const itinerary of itineraries) {
+        const priceFormatted = itinerary.price.formatted;
+        if (!pricesSet.has(priceFormatted)) {
+          pricesSet.add(priceFormatted);
+          filteredItineraries.push(itinerary);
+        }
+        if (filteredItineraries.length === 10) break;
+      }
+      console.log(filteredItineraries)
+      setItinerarios(filteredItineraries);
+
     } catch (error) {
       console.error(error);
       alert(
@@ -111,6 +123,16 @@ function Conteudo() {
       );
     }
   };
+
+  function trocarLocais() {
+    const destinoTemp = destino;
+    setDestino(origem);
+    setOrigem(destinoTemp);
+
+    const completeDestinoTemp = resultadosAutoCompleteDestino
+    setResultadosAutoCompleteDestino(resultadosAutoCompleteOrigem)
+    setResultadosAutoCompleteOrigem(completeDestinoTemp)
+  }
 
   return (
     <>
@@ -127,6 +149,9 @@ function Conteudo() {
           ))}
         </datalist>
 
+        <button onClick={trocarLocais}><img id="change" src='https://cdn-icons-png.freepik.com/512/50/50482.png'/></button>
+
+
         <input type="text" name="destino" list="autoCompleteDestino" placeholder="Destino" value={destino} onChange={(e) => {   setDestino(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteDestino}
         />
         <datalist id="autoCompleteDestino">
@@ -135,11 +160,7 @@ function Conteudo() {
           ))}
         </datalist>
 
-        <input
-          type="date"
-          value={dataPartida}
-          onChange={handleChangeDataPartida}
-        />
+        <input type="date" value={dataPartida} onChange={handleChangeDataPartida}/>
 
         <button id="Search" onClick={pesquisarVoos}>
           Search
@@ -148,25 +169,16 @@ function Conteudo() {
       <br/><br/><br/>
 
       <div className="itinerarios">
-  {itinerarios.itineraries && itinerarios.itineraries.reduce((acc, itinerario, index) => {
-    if (acc.count >= 10) return acc;
-
-    const isDifferentPrice = index === 0 || itinerario.price.formatted !== itinerarios.itineraries[index - 1].price.formatted;
-
-    if (isDifferentPrice) {
-      acc.count++;
-      acc.elements.push(
-        <div key={index} className="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" id="iconAviao"/>
-          <h2>Itinerário - {origem} : {destino}</h2>
-          <p id="preço">{itinerario.price.formatted}</p>
+        {itinerarios.map((itinerario) => (
+        <div className="card">
+            <img src={itinerario.legs[0].carriers.marketing[0].logoUrl} id="iconAirline"/>
+            <h2>{itinerario.legs[0].carriers.marketing[0].name}&nbsp;-&nbsp;   
+            {Math.floor(itinerario.legs[0].durationInMinutes/60)}h {itinerario.legs[0].durationInMinutes%60}m
+            <img src='https://cdn-icons-png.flaticon.com/512/3125/3125713.png' id="iconAviao"/> </h2>
+            <p id="preço">{itinerario.price.formatted}</p>
         </div>
-      );
-    }
-
-    return acc;
-  }, { count: 0, elements: [] }).elements}
-</div>
+        ))}
+      </div>
 
     </>
   );
