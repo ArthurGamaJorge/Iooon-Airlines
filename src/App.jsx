@@ -11,14 +11,6 @@ import Cadastro from './components/Cadastro';
 import Login from './components/Login';
 import Conteudo from './components/Conteudo';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-     <BrowserRouter>
-        <App />
-     </BrowserRouter>
-  </React.StrictMode>,
-)
-
 function App() {
 
   return (
@@ -53,5 +45,13 @@ function Site(){
     </div>
   )
 }
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+     <BrowserRouter>
+        <App />
+     </BrowserRouter>
+  </React.StrictMode>,
+)
 
 export default App

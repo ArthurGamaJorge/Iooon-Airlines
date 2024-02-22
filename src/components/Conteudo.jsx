@@ -1,83 +1,175 @@
-import "../components/site.css"
+import "../components/site.css";
+import axios from "axios";
+import React, { useState } from "react";
 
-function Conteudo(){
-    return(
-        <>
-            <div id="Alta">
-            <h1 id="Titulo">EM ALTA</h1>
+function Conteudo() {
+  const apiKey = "89014fa1a1msh97a24338acfdb10p1032f3jsnf6584350e8e9";
+  const autoCompleteEndpoint =
+    "https://sky-scanner3.p.rapidapi.com/flights/auto-complete";
 
-            <div className="ContainerGeral">
+  const [origem, setOrigem] = useState("");
+  const [destino, setDestino] = useState("");
+  const [dataPartida, setDataPartida] = useState("");
+  const [resultadosAutoCompleteOrigem, setResultadosAutoCompleteOrigem] =
+    useState([]);
+  const [resultadosAutoCompleteDestino, setResultadosAutoCompleteDestino] =
+    useState([]);
+  const [itinerarios, setItinerarios] = useState([]);
 
-                <div className="Card">
-                    <div className="Imagem" id="Imagem1"></div>
-                    <h1>Rio de Janeiro</h1> <br/>
-                    <p>Preço São Paulo - Rio: R$300</p>
-                </div>
+  const fazerSolicitacaoAutoCompleteOrigem = async () => {
+    try {
+      const response = await axios.get(autoCompleteEndpoint, {
+        params: { query: origem },
+        headers: {
+          "X-RapidAPI-Key": apiKey,
+          "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
+        },
+      });
 
-                <div className="Card">
-                    <div className="Imagem" id="Imagem2"></div>
-                    <h1>Fortaleza</h1> <br/>
-                    <p>Preço São Paulo - Fortaleza: R$1100</p>
-                </div>
+      setResultadosAutoCompleteOrigem(response.data.data.slice(0, 5)); // Assumindo que data é um array de objetos
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-                <div className="Card">
-                    <div className="Imagem" id="Imagem3"></div>
-                    <h1>Brasilia</h1> <br/>
-                    <p>Preço São Paulo - Brasilia: R$400</p>
-                </div>
+  const fazerSolicitacaoAutoCompleteDestino = async () => {
+    try {
+      const response = await axios.get(autoCompleteEndpoint, {
+        params: { query: destino },
+        headers: {
+          "X-RapidAPI-Key": apiKey,
+          "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
+        },
+      });
 
-                <div className="Card">
-                    <div className="Imagem" id="Imagem4"></div>
-                    <h1>Manaus</h1> <br/>
-                    <p>Preço São Paulo - Manaus: R$1300</p>
-                </div>
+      setResultadosAutoCompleteDestino(response.data.data.slice(0, 5)); // Assumindo que data é um array de objetos
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-                <div className="Card">
-                    <div className="Imagem" id="Imagem5"></div>
-                    <h1>Bahia</h1> <br/>
-                    <p>Preço São Paulo - Bahia: R$800</p>
-                </div>
-            </div>
+  const handleChangeOrigem = (event) => {
+    setOrigem(event.target.value);
+  };
 
-            <br/><br/><br/>
-            </div>
+  const handleChangeDestino = (event) => {
+    setDestino(event.target.value);
+  };
 
-            <br/><br/><br/><br/><br/>
+  const handleChangeDataPartida = (event) => {
+    setDataPartida(event.target.value);
+  };
 
-            <div id="Barato">
-                <h1 id="Titulo">MAIS BARATO</h1>
+  const pesquisarVoos = async () => {
+    let origemId = null;
+    let destinoId = null;
 
-                <div className="ContainerGeral">
+    for (var i = 0; i < resultadosAutoCompleteOrigem.length; i++) {
+      if (resultadosAutoCompleteOrigem[i].presentation.title === origem) {
+        origemId = resultadosAutoCompleteOrigem[i].presentation.id;
+      }
+    }
 
-                    <div className="Card">
-                        <div className="Imagem" id="Imagem6"></div>
-                        <h1>Porto seguro</h1> <br/>
-                        <p>Preço São Paulo - Bahia: R$270</p>
-                    </div>
+    for (var i = 0; i < resultadosAutoCompleteDestino.length; i++) {
+      if (resultadosAutoCompleteDestino[i].presentation.title === destino) {
+        destinoId = resultadosAutoCompleteDestino[i].presentation.id;
+      }
+    }
 
-                    <div className="Card">
-                        <div className="Imagem" id="Imagem7"></div>
-                        <h1>Arraial do Cabo</h1> <br/>
-                        <p>Preço São Paulo - Rio: R$150</p>
-                    </div>
+    if (origemId === null || destinoId === null || !dataPartida) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
 
-                    <div className="Card">
-                        <div className="Imagem" id="Imagem8"></div>
-                        <h1>Sana</h1> <br/>
-                        <p>Preço São Paulo - Rio: R$150</p>
-                    </div>
+    const options = {
+      method: "GET",
+      url: "https://sky-scanner3.p.rapidapi.com/flights/search-one-way",
+      params: {
+        fromEntityId: origemId,
+        toEntityId: destinoId,
+        departDate: dataPartida,
+      },
+      headers: {
+        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
+      },
+    };
 
-                    <div className="Card">
-                        <div className="Imagem" id="Imagem9"></div>
-                        <h1>Ouro Preto</h1> <br/>
-                        <p>Preço São Paulo - Minas Gerais: R$200</p>
-                    </div>
+    try {
+      const response = await axios.request(options);
+      const itineraries = response.data.data; // Verifique a estrutura da resposta e ajuste conforme necessário
+      console.log(itineraries);
+      setItinerarios(itineraries);
 
-                </div> <br/><br/><br/>
-            </div>
-                <br/><br/><br/><br/>
-        </>
-    )
+      if (itineraries.length === 0) {
+        alert("Não há viagens nesse dia :(");
+      }
+    } catch (error) {
+      console.error(error);
+      alert(
+        "Ocorreu um erro ao buscar os itinerários. Por favor, tente novamente."
+      );
+    }
+  };
+
+  return (
+    <>
+      <div className="formViagem">
+        <input type="text" name="origem" list="autoCompleteOrigem" placeholder="Origem" value={origem} onChange={(e) => {   setOrigem(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteOrigem}
+        />
+        <datalist id="autoCompleteOrigem">
+          {resultadosAutoCompleteOrigem.map((resultado, index) => (
+            <option
+              key={index}
+              value={resultado.presentation.title}
+              id={resultado.presentation.id}
+            />
+          ))}
+        </datalist>
+
+        <input type="text" name="destino" list="autoCompleteDestino" placeholder="Destino" value={destino} onChange={(e) => {   setDestino(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteDestino}
+        />
+        <datalist id="autoCompleteDestino">
+          {resultadosAutoCompleteDestino.map((resultado, index) => (
+            <option key={index} value={resultado.presentation.title} />
+          ))}
+        </datalist>
+
+        <input
+          type="date"
+          value={dataPartida}
+          onChange={handleChangeDataPartida}
+        />
+
+        <button id="Search" onClick={pesquisarVoos}>
+          Search
+        </button>
+      </div>
+      <br/><br/><br/>
+
+      <div className="itinerarios">
+  {itinerarios.itineraries && itinerarios.itineraries.reduce((acc, itinerario, index) => {
+    if (acc.count >= 10) return acc;
+
+    const isDifferentPrice = index === 0 || itinerario.price.formatted !== itinerarios.itineraries[index - 1].price.formatted;
+
+    if (isDifferentPrice) {
+      acc.count++;
+      acc.elements.push(
+        <div key={index} className="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" id="iconAviao"/>
+          <h2>Itinerário - {origem} : {destino}</h2>
+          <p id="preço">{itinerario.price.formatted}</p>
+        </div>
+      );
+    }
+
+    return acc;
+  }, { count: 0, elements: [] }).elements}
+</div>
+
+    </>
+  );
 }
 
-export default Conteudo
+export default Conteudo;
