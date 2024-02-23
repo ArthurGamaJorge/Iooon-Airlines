@@ -41,6 +41,7 @@ function Conteudo() {
       });
 
       setResultadosAutoCompleteDestino(response.data.data.slice(0, 5));
+      console.log(resultadosAutoCompleteDestino)
     } catch (error) {
       console.error(error);
     }
@@ -137,7 +138,8 @@ function Conteudo() {
   return (
     <>
       <div className="formViagem">
-        <input type="text" name="origem" list="autoCompleteOrigem" placeholder="Origem" value={origem} onChange={(e) => {   setOrigem(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteOrigem}
+        <input type="text" name="origem" list="autoCompleteOrigem" placeholder="Origem" value={origem} autoComplete="off" 
+        onChange={(e) => {   setOrigem(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteOrigem}
         />
         <datalist id="autoCompleteOrigem">
           {resultadosAutoCompleteOrigem.map((resultado, index) => (
@@ -152,7 +154,8 @@ function Conteudo() {
         <button onClick={trocarLocais}><img id="change" src='https://cdn-icons-png.freepik.com/512/50/50482.png'/></button>
 
 
-        <input type="text" name="destino" list="autoCompleteDestino" placeholder="Destino" value={destino} onChange={(e) => {   setDestino(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteDestino}
+        <input type="text" name="destino" list="autoCompleteDestino" placeholder="Destino" value={destino} autoComplete="off"
+        onChange={(e) => {   setDestino(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteDestino}
         />
         <datalist id="autoCompleteDestino">
           {resultadosAutoCompleteDestino.map((resultado, index) => (
@@ -166,19 +169,20 @@ function Conteudo() {
           Search
         </button>
       </div>
-      <br/><br/><br/>
 
-      <div className="itinerarios">
         {itinerarios.map((itinerario) => (
         <div className="card">
             <img src={itinerario.legs[0].carriers.marketing[0].logoUrl} id="iconAirline"/>
-            <h2>{itinerario.legs[0].carriers.marketing[0].name}&nbsp;-&nbsp;   
-            {Math.floor(itinerario.legs[0].durationInMinutes/60)}h {itinerario.legs[0].durationInMinutes%60}m
-            <img src='https://cdn-icons-png.flaticon.com/512/3125/3125713.png' id="iconAviao"/> </h2>
+            <h2>{itinerario.legs[0].carriers.marketing[0].name}</h2>
+            <p id="info">-&nbsp;&nbsp;
+            {new Date(itinerario.legs[0].departure).getHours()}h{new Date(itinerario.legs[0].departure).getMinutes()}m
+            <img src='https://cdn-icons-png.flaticon.com/512/3125/3125713.png' id="iconAviao"/> 
+            {new Date(itinerario.legs[0].arrival).getHours()}h{new Date(itinerario.legs[0].arrival).getMinutes()}m
+            </p>
             <p id="preço">{itinerario.price.formatted}</p>
+            <p id="duração">{Math.floor(itinerario.legs[0].durationInMinutes/60)}h {itinerario.legs[0].durationInMinutes%60}m</p>
         </div>
         ))}
-      </div>
 
     </>
   );

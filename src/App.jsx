@@ -38,7 +38,7 @@ function Home(){
 
 function Site(){
   return(
-    <div>
+    <div className='Site'>
       <Header/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Conteudo/><br/><br/>
       <Footer/>
