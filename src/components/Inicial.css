@@ -234,10 +234,10 @@
 }
 
 @media (max-width: 1040px) {
-  #IconeMenu {
+  .Home #IconeMenu {
     display: block;
   }
-  #seta {
+  .Home #seta {
     display: none;
   }
   .Home  .lista {
