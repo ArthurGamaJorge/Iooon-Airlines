@@ -4,8 +4,7 @@ import React, { useState } from "react";
 
 function Conteudo() {
   const apiKey = "89014fa1a1msh97a24338acfdb10p1032f3jsnf6584350e8e9";
-  const autoCompleteEndpoint =
-    "https://sky-scanner3.p.rapidapi.com/flights/auto-complete";
+  const autoCompleteEndpoint = "https://sky-scanner3.p.rapidapi.com/flights/auto-complete";
 
   const [origem, setOrigem] = useState("");
   const [destino, setDestino] = useState("");
@@ -14,34 +13,67 @@ function Conteudo() {
   const [resultadosAutoCompleteDestino, setResultadosAutoCompleteDestino] = useState([]);
   const [itinerarios, setItinerarios] = useState([]);
 
-  const fazerSolicitacaoAutoCompleteOrigem = async () => {
-    try {
-      const response = await axios.get(autoCompleteEndpoint, {
-        params: { query: origem },
-        headers: {
-          "X-RapidAPI-Key": apiKey,
-          "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
-        },
-      });
-
-      setResultadosAutoCompleteOrigem(response.data.data.slice(0, 5));
-    } catch (error) {
-      console.error(error);
-    }
+  const getCachedData = () => {
+    const cachedData = localStorage.getItem('cityCache');
+    return cachedData ? JSON.parse(cachedData) : {};
   };
 
-  const fazerSolicitacaoAutoCompleteDestino = async () => {
+  const setCachedData = (data) => {
+    localStorage.setItem('cityCache', JSON.stringify(data));
+  };
+
+  const getSearchTermCache = () => {
+    const searchTermCache = localStorage.getItem('searchTermCache');
+    return searchTermCache ? JSON.parse(searchTermCache) : {};
+  };
+
+  const setSearchTermCache = (data) => {
+    localStorage.setItem('searchTermCache', JSON.stringify(data));
+  };
+
+  const fazerSolicitacaoAutoComplete = async (query, isOrigem) => {
     try {
+      const searchTermCache = getSearchTermCache();
+
+      // Check if exact match is in cache
+      if (searchTermCache[query]) {
+        if (isOrigem) {
+          setResultadosAutoCompleteOrigem(searchTermCache[query]);
+        } else {
+          setResultadosAutoCompleteDestino(searchTermCache[query]);
+        }
+        return;
+      }
+
+      // If not cached, make API request
       const response = await axios.get(autoCompleteEndpoint, {
-        params: { query: destino },
+        params: { query: query },
         headers: {
           "X-RapidAPI-Key": apiKey,
           "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
         },
       });
 
-      setResultadosAutoCompleteDestino(response.data.data.slice(0, 5));
-      console.log(resultadosAutoCompleteDestino)
+      const cachedData = getCachedData();
+      const newResults = response.data.data;
+
+      newResults.forEach(result => {
+        if (!cachedData[result.presentation.id]) {
+          cachedData[result.presentation.id] = result.presentation.title;
+        }
+      });
+
+      setCachedData(cachedData);
+
+      // Cache search term
+      searchTermCache[query] = newResults;
+      setSearchTermCache(searchTermCache);
+
+      if (isOrigem) {
+        setResultadosAutoCompleteOrigem(newResults);
+      } else {
+        setResultadosAutoCompleteDestino(newResults);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -49,10 +81,12 @@ function Conteudo() {
 
   const handleChangeOrigem = (event) => {
     setOrigem(event.target.value);
+    fazerSolicitacaoAutoComplete(event.target.value, true);
   };
 
   const handleChangeDestino = (event) => {
     setDestino(event.target.value);
+    fazerSolicitacaoAutoComplete(event.target.value, false);
   };
 
   const handleChangeDataPartida = (event) => {
@@ -60,25 +94,16 @@ function Conteudo() {
   };
 
   const pesquisarVoos = async () => {
-    let origemId = null;
-    let destinoId = null;
 
-    for (let i = 0; i < resultadosAutoCompleteOrigem.length; i++) {
-      if (resultadosAutoCompleteOrigem[i].presentation.title === origem) {
-        origemId = resultadosAutoCompleteOrigem[i].presentation.id;
-      }
-    }
-
-    for (let i = 0; i < resultadosAutoCompleteDestino.length; i++) {
-      if (resultadosAutoCompleteDestino[i].presentation.title === destino) {
-        destinoId = resultadosAutoCompleteDestino[i].presentation.id;
-      }
-    }
-
-    if (origemId === null || destinoId === null || !dataPartida) {
+    if (!origem || !destino || !dataPartida) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
+
+    const cachedData = getCachedData();
+
+    let origemId = Object.keys(cachedData).find(id => cachedData[id] === origem);
+    let destinoId = Object.keys(cachedData).find(id => cachedData[id] === destino);
 
     const options = {
       method: "GET",
@@ -96,10 +121,16 @@ function Conteudo() {
 
     try {
       const response = await axios.request(options);
-      const itineraries = response.data.data.itineraries; 
+      console.log(response)
+      const itineraries = response.data.data.itineraries;
 
+      console.log(itineraries)
+      if(itineraries == undefined){
+        alert("Selecione uma cidade específica do país")
+        return
+      }
       if (itineraries.length === 0) {
-        alert("Não há viagens nesse dia :(");
+        alert("Não há viagens nesse dia");
         return;
       }
 
@@ -114,14 +145,11 @@ function Conteudo() {
         }
         if (filteredItineraries.length === 10) break;
       }
-      console.log(filteredItineraries)
       setItinerarios(filteredItineraries);
 
     } catch (error) {
       console.error(error);
-      alert(
-        "Ocorreu um erro ao buscar os itinerários. Por favor, tente novamente."
-      );
+      alert("Ocorreu um erro ao buscar os itinerários. Por favor, tente novamente.");
     }
   };
 
@@ -130,47 +158,50 @@ function Conteudo() {
     setDestino(origem);
     setOrigem(destinoTemp);
 
-    const completeDestinoTemp = resultadosAutoCompleteDestino
-    setResultadosAutoCompleteDestino(resultadosAutoCompleteOrigem)
-    setResultadosAutoCompleteOrigem(completeDestinoTemp)
+    const completeDestinoTemp = resultadosAutoCompleteDestino;
+    setResultadosAutoCompleteDestino(resultadosAutoCompleteOrigem);
+    setResultadosAutoCompleteOrigem(completeDestinoTemp);
   }
 
   return (
     <>
       <div className="formViagem">
-        <input type="text" name="origem" list="autoCompleteOrigem" placeholder="Origem" value={origem} autoComplete="off" 
-        onChange={(e) => {   setOrigem(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteOrigem}
-        />
-        <datalist id="autoCompleteOrigem">
-          {resultadosAutoCompleteOrigem.map((resultado, index) => (
-            <option
-              key={index}
-              value={resultado.presentation.title}
-              id={resultado.presentation.id}
-            />
-          ))}
-        </datalist>
+        <h1>Procure informações sobre voos entre duas cidades</h1> <br/>
+        
+        <div className="locais">
+          <input type="text" name="origem" list="autoCompleteOrigem" placeholder="Origem" value={origem} autoComplete="off" 
+          onChange={handleChangeOrigem}
+          />
+          <datalist id="autoCompleteOrigem">
+            {resultadosAutoCompleteOrigem.map((resultado, index) => (
+              <option key={'auto' + index} value={resultado.presentation.title} id={resultado.presentation.id}/>
+            ))}
+          </datalist>
 
-        <button onClick={trocarLocais}><img id="change" src='https://cdn-icons-png.freepik.com/512/50/50482.png'/></button>
+          <button onClick={trocarLocais}><img id="change" src='https://cdn-icons-png.freepik.com/512/50/50482.png'/></button>
 
+          <input type="text" name="destino" list="autoCompleteDestino" placeholder="Destino" value={destino} autoComplete="off"
+          onChange={handleChangeDestino}
+          />
+          <datalist id="autoCompleteDestino">
+            {resultadosAutoCompleteDestino.map((resultado, index) => (
+              <option key={index} value={resultado.presentation.title} />
+            ))}
+          </datalist>
 
-        <input type="text" name="destino" list="autoCompleteDestino" placeholder="Destino" value={destino} autoComplete="off"
-        onChange={(e) => {   setDestino(e.target.value); }} onBlur={fazerSolicitacaoAutoCompleteDestino}
-        />
-        <datalist id="autoCompleteDestino">
-          {resultadosAutoCompleteDestino.map((resultado, index) => (
-            <option key={index} value={resultado.presentation.title} />
-          ))}
-        </datalist>
+          <button id="na"><svg id="change" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFA500" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-minus"><path d="M5 12h14"/></svg></button>
 
-        <input type="date" value={dataPartida} onChange={handleChangeDataPartida}/>
+          <input type="date" value={dataPartida} onChange={handleChangeDataPartida}/>
+
+        
+        </div>
 
         <button id="Search" onClick={pesquisarVoos}>
-          Search
+          Procurar
         </button>
       </div>
 
-        {itinerarios.map((itinerario) => (
+      {itinerarios.map((itinerario) => (
         <div className="cardViagem">
             <img src={itinerario.legs[0].carriers.marketing[0].logoUrl} id="iconAirline"/>
             <h2>{itinerario.legs[0].carriers.marketing[0].name}</h2>
@@ -182,8 +213,7 @@ function Conteudo() {
             <p id="preço">{itinerario.price.formatted}</p>
             <p id="duração">{Math.floor(itinerario.legs[0].durationInMinutes/60)}h {itinerario.legs[0].durationInMinutes%60}m</p>
         </div>
-        ))}
-
+      ))}
     </>
   );
 }

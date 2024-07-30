@@ -5,7 +5,7 @@ function Hero(){
         <>
             <section className="Main">
 
-                <div class="info">
+                <div className="info">
                     <span> <h1 id="IOOON">IOOON</h1><h1 id="Airlines">Airlines</h1> </span>
                     <p>A IOOON Airlines - A forma mais rápida e segura de ir a qualquer lugar! Cadastre-se e embarque para a melhor experiência da sua vida com a IOOON Airlines</p>
                 </div>

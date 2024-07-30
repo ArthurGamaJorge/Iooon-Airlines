@@ -42,7 +42,7 @@ function Login() {
     return (
         <>
         <a href="../" className="voltar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 26 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 26 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-left">
                 <path d="m15 18-6-6 6-6"/>
             </svg>
         </a>

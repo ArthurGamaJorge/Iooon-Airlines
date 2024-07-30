@@ -22,7 +22,6 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    background-color: var(--light);
     width: 80%;
     padding: 1% 0%;
     border-radius: 20px;
@@ -32,10 +31,31 @@
     flex-wrap: wrap;
   }
 
+  .formViagem h1{
+    width: 100%;
+    margin-bottom: -4vmax;
+  }
+
+  .locais{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #na{
+    cursor: auto;
+  }
+
   .formViagem input, .formViagem button{
     padding: 1% 0%;
     text-align: center;
     font-size: calc(0.7vmax + 10px);
+  }
+
+  .formViagem button{
+    color: var(--light);
   }
 
   .formViagem input{
@@ -50,8 +70,8 @@
   }
 
   .cardViagem{
-    border: 1px solid var(--light);
-    background-color: var(--dark);
+    border: 1px solid var(--dark);
+    background-color: var(--light);
     width: 70%;
     margin: auto;
     display: flex;
@@ -62,6 +82,11 @@
     position: relative;
     border-radius: 20px;
     flex-wrap: wrap;
+  }
+
+  .Dark-theme .cardViagem{
+    border: 1px solid var(--light);
+    background-color: var(--dark);
   }
 
   .cardViagem h2, #info{
@@ -109,9 +134,12 @@
 
   #Search{
     display: flex;
+    justify-content: center;
+    width: calc(4vmax + 100px);
     background-color: var(--principal-color);
-    padding: 2%;
-    border-radius: 20%;
+    padding: 1%;
+    border-radius: 20px;
+    font-size: 30px;
     align-items: center;
   }
 
