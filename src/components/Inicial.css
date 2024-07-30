@@ -51,6 +51,8 @@ body {
   }
 
   .Principal {
+    display: flex;
+    align-items: center;
     font-size: calc(3vmax + 20px);
     font-weight: 1000;
     color: var(--principal-color);
@@ -89,6 +91,7 @@ header {
   #icone {
   width: calc(3vmax + 20px);
   height: auto;
+  margin-right: 10px;
 }
 
 .Home .Main {
@@ -97,8 +100,8 @@ header {
   justify-content: center;
   margin-top: calc(4vmax + 70px);
   padding: 0px 10vh;
-  margin-bottom: 5vh;
-  height: calc(85vh - 20px);
+  margin-bottom: 7vh;
+  height: calc(83vh - 20px);
   align-items: center;
   position: relative;
 }

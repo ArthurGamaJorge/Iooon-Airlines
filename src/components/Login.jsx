@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import "../components/cadastro.css"
+import "../components/cadastro.css";
 
 function Login() {
     const [darkTheme] = useState(() => {
@@ -32,7 +32,7 @@ function Login() {
         const usuarioValido = listaUser.find(item => nome === item.nomeCad && senha === item.senhaCad);
 
         if (usuarioValido) {
-            localStorage.setItem('logado', nome)
+            localStorage.setItem('logado', nome);
             window.location.href = "/site";
         } else {
             setError('Nome de usuário ou senha inválidos');
@@ -40,23 +40,34 @@ function Login() {
     }
 
     return (
+        <>
+        <a href="../" className="voltar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 26 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-left">
+                <path d="m15 18-6-6 6-6"/>
+            </svg>
+        </a>
         <div className="Cadastro">
             <form onSubmit={handleSubmit} id="formulario">
-                <fieldset style={{ height: '350px' }}>
+                <fieldset>
                     <legend>Login</legend> <br />
-                    <label>Nome: </label> <br />
-                    <input type="text" name="Nome" id="nome" value={nome} onChange={e => setNome(e.target.value)} required /> <br /><br />
+                    <div className="divDados">
+                        <label>Nome: </label>
+                        <input type="text" name="Nome" id="nome" value={nome} onChange={e => setNome(e.target.value)} required /> <br/><br/>
 
-                    <label>Senha: </label> <br />
-                    <input type="password" name="Senha" id="Senha" value={senha} onChange={e => setSenha(e.target.value)} required /> <br /><br />
+                        <label>Senha: </label>
+                        <input type="password" name="Senha" id="Senha" value={senha} onChange={e => setSenha(e.target.value)} required /> 
+                        {error ? <p id="error">{error}</p> : <br/>} <br/>
+                        
+                        <div className="botõesForm">
+                            <input type="submit" value="Entrar" />
+                        </div> 
 
-                    <button type="submit" id="Entrar">Entrar</button> <br /><br />
-                    {error && <p id="error">{error}</p>} <br />
-
-                    <Link to="../">Home Page</Link>
+                        <Link to="../">Home Page</Link>
+                    </div>
                 </fieldset> <br /><br />
             </form>
         </div>
+        </>
     );
 }
 
