@@ -171,7 +171,7 @@ function Conteudo() {
       </div>
 
         {itinerarios.map((itinerario) => (
-        <div className="card">
+        <div className="cardViagem">
             <img src={itinerario.legs[0].carriers.marketing[0].logoUrl} id="iconAirline"/>
             <h2>{itinerario.legs[0].carriers.marketing[0].name}</h2>
             <p id="info">-&nbsp;&nbsp;

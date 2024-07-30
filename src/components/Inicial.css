@@ -15,16 +15,32 @@
     text-decoration: none;
 }
 
-.Home body {
+body {
     background-color: var(--light);
     color: black;
+    text-align: center;
 }
 
-.Home .lista {
+.lista {
     display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  #buttonTema {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .lista li a{
+    display: flex;
+    align-items: center;
   }
   
-  .Home .lista a {
+  .lista a {
     font-size: 40px;
     color: var(--principal-color);
     margin-left: 50px;
@@ -34,29 +50,29 @@
     justify-content: center;
   }
 
-  .Home .Principal {
+  .Principal {
     font-size: calc(3vmax + 20px);
     font-weight: 1000;
     color: var(--principal-color);
   }
 
-  .Home button{
+  button{
     border: none;
     background-color: transparent;
     cursor: pointer;
   }
 
-  .Home #tema {
+  #tema {
     width: 40px;
+    margin-left: 50px;
   }
 
 .Home #aHover:hover{
-  background-color: rgb(232, 232, 232);
-  box-shadow: 15px 15px 20px -15px var(--principal-color);    
-  border: 1px solid var(--principal-color)
+  transition: text-shadow 0.2s ease-in-out;
+  text-shadow: 0 3px 8px rgb(255, 165, 0, 0.5); 
 }
 
-.Home header {
+header {
     background-color: var(--light);
     position: fixed;
     right: 0;
@@ -70,7 +86,7 @@
     filter: drop-shadow(0px 3px 10px var(--dark));
   }
 
-  .Home #icone {
+  #icone {
   width: calc(3vmax + 20px);
   height: auto;
 }
@@ -80,8 +96,11 @@
   grid-template-columns: repeat(2, 3fr);
   justify-content: center;
   margin-top: calc(4vmax + 70px);
-  padding: 10vh;
-  height: 100vh;
+  padding: 0px 10vh;
+  margin-bottom: 5vh;
+  height: calc(85vh - 20px);
+  align-items: center;
+  position: relative;
 }
 
 .Home .Main h1 {
@@ -106,19 +125,24 @@
   width: calc(25vmax + 100px);
 }
 
-.Home #seta {
-  position: absolute;
-  right: 5%;
+#logout {
+  position: fixed;
+  right: 3%;
   bottom: 5%;
-  width: 60px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
   background-color: var(--secondary-dark);
-  border-radius: 40px;
+  border-radius: 100%;
   transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.Home #seta:hover{
-  cursor: pointer;
-  transform: translateY(20px);
+#logout img{
+  width: 25px;
 }
 
 .Home .ContainerGeral {
@@ -130,7 +154,6 @@
 .Home .card {
   width: calc(20vmax + 100px);
   height: calc(15vmax + 80px);
-  background-color: var(--dark);
   border-radius: 1vmax;
   border: 2px solid;
   margin-top: 20px;
@@ -165,20 +188,22 @@
   background-image: url("../assets/RioJaneiro.jpg");
 }
 
-.Home footer {
+footer {
   background-color: var(--principal-color);
   color: var(--secondary-dark);
   font-size: calc(0.5vmax + 10px);
   display: flex;
   padding: 5px 40px 5px 40px;
+  position: absolute;
+  bottom: 0;
   width: 100%;
 }
 
-.Home footer a {
+footer a {
   color: var(--secondary-light);
 }
 
-.Home #creditos {
+#creditos {
   position: absolute;
   right: 40px;
 }
@@ -191,22 +216,63 @@
   font-size: calc(2vmax + 12px);
 }
 
-#logout img{
-  width: 20px;
-}
-
-#logout{
+.popupSair{
+  width: 40%;
   position: fixed;
-  padding: 0.5%;
-  left: 5%;
-  bottom: 5%;
-  border-radius: 50%;
-  background-color: #2467F1;
+  left: 50%;
+  top: 50%;
+  background-color: var(--light);
+  transform: translate(-50%, -50%);
+  color: var(--dark);
+  border-radius: 10px;
+  border: 2px solid var(--dark);
+  padding: 2% 2% 3% 2%;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.15));
+  z-index: 999;
 }
 
+.popupSair button{
+  background-color: var(--principal-color);
+  font-family: Dosis, sans-serif;
+  color: var(--light);
+  width: 40%;
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: calc(1vmax + 15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.popupSair button:hover{
+  background-color: #c08b28;
+}
 
+.popupSair button:active{
+  background-color: #aa7d2a;
+}
+
+.popupSair h1{
+  width: 100%;
+}
+
+.Dark-theme .popupSair{
+  background-color: var(--dark);
+  border: var(--light);
+  color: var(--light);
+  border: 2px solid var(--light);
+  box-shadow: 0 4px 4px rgba(255, 255, 255, 0.25);
+}
+
+.Dark-theme .popupSair button{
+  box-shadow: 0 4px 4px rgba(255, 255, 255, 0.405);
+}
 
 .Dark-theme, .Dark-theme header {
   background-color: var(--dark);
@@ -221,11 +287,6 @@
   box-shadow: 0px 2px 10px var(--light);
 }
 
-.Dark-theme  #aHover:hover{
-  background-color: rgb(32, 32, 32);
-  box-shadow: 15px 15px 20px -15px var(--principal-color);    
-}
-
 #IconeMenu {
   width: 50px;
   z-index: 11;
@@ -234,13 +295,13 @@
 }
 
 @media (max-width: 1040px) {
-  .Home #IconeMenu {
+  #IconeMenu {
     display: block;
   }
-  .Home #seta {
-    display: none;
+  .popupSair{
+    width: 80%;
   }
-  .Home  .lista {
+  .lista {
     position: absolute;
     top: 100%;
     right: -120%;
@@ -256,13 +317,13 @@
   .Dark-theme .lista{
     background: var(--dark);
   }
-  .Home .lista a,
-  .Home  .lista button {
+  .lista a,
+  .lista button {
     margin-left: 0;
     display: block;
     margin: 5px 0;
   }
-  .Home  .lista.open {
+  .lista.open {
     right: 0;
     height: 300px;
     width: 200px;
@@ -272,9 +333,17 @@
   }
   .Home .Main {
     grid-template-columns: repeat(1, 1fr);
-    height: auto;
+    height: calc(90vh - 20px);
+    margin-bottom: 0px;
   }
   #ImagemCentral {
-    margin: auto;
+    margin: auto !important;
+    display: block;
+  }
+  .info{
+    margin-bottom: -100px;
+  }
+  .lista a, #tema{
+    margin-left: 0px !important;
   }
 }

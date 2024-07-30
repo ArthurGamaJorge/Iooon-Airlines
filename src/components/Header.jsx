@@ -6,14 +6,13 @@ import Dark from '../assets/Dark theme.png'
 import Light from '../assets/Light theme.png'
 import Logout from '../assets/sair.png'
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import "../components/Inicial.css"
 
-
 function Header(){
-
-    const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar se o menu está aberto
+    const [menuOpen, setMenuOpen] = useState(false); 
+    const navigate = useNavigate(); // Hook para navegação
     function toggleMenu() {
         setMenuOpen(!menuOpen); 
     }
@@ -24,7 +23,7 @@ function Header(){
     });
     function toggleTheme() {
         setDarkTheme(!darkTheme); 
-        document.body.classList.toggle('Dark-theme')
+        document.body.classList.toggle('Dark-theme');
     }
     useEffect(() => {
         localStorage.setItem('theme', JSON.stringify(darkTheme));
@@ -42,29 +41,53 @@ function Header(){
         return nomeUsuario ? nomeUsuario : '';
     });
 
-    useEffect(() => {
-        localStorage.setItem('theme', JSON.stringify(darkTheme));
-    }, [darkTheme]);
+    const [popupVisible, setPopupVisible] = useState(false); 
+
+    const handleLogoutClick = () => {
+        setPopupVisible(true); 
+    };
+
+    const handleConfirmLogout = () => {
+        localStorage.setItem('logado', '');
+        setLogado('');
+        setPopupVisible(false); 
+        navigate('/');
+    };
+
+    const handleCancelLogout = () => {
+        setPopupVisible(false); 
+    };
 
     return(
         <>
             <header>
                 <Link to = '../' ><a href="#" className="Principal"> <img src={Logo} id="icone"/> Home</a></Link>
-                <ul className={menuOpen? 'lista open': 'lista'}>
-                    {logado == '' ? <>
-                        <li> <Link to = "/cadastro"><a id="aHover"> Cadastro</a> </Link> </li>
-                        <li> <Link to = "/login"><a id="aHover"> Login</a> </Link> </li> 
-                    </> : <li><Link to = "/site"><a id="aHover"> Site</a> </Link></li>}
-                    <li> <a> <button onClick={()=>{toggleTheme()}}> <img src={darkTheme? Dark:Light} id="tema"/> </button></a></li>
+                <ul className={menuOpen ? 'lista open' : 'lista'}>
+                    {logado === '' ? (
+                        <>
+                            <li> <Link to="/cadastro"><a id="aHover"> Cadastro</a> </Link> </li>
+                            <li> <Link to="/login"><a id="aHover"> Login</a> </Link> </li>
+                        </>
+                    ) : <li><Link to="/site"><a id="aHover"> Site</a> </Link></li>}
+                    <li> <a> <button onClick={toggleTheme} id="buttonTema"> <img src={darkTheme ? Dark : Light} id="tema"/> </button></a></li>
                 </ul>
 
-                <div className={menuOpen? 'Bx bx-menu bx-x': 'Bx bx-menu'} id="IconeMenu" onClick={()=>{toggleMenu()}}>
+                <div className={menuOpen ? 'Bx bx-menu bx-x' : 'Bx bx-menu'} id="IconeMenu" onClick={toggleMenu}>
                     <img src={Menu} id="IconeMenu"/>
                 </div>
             </header>
-            {logado != '' ? <button id="logout" onClick={()=>{localStorage.setItem('logado', ''); setLogado(false)}}><img src={Logout}/></button> : null}
+
+            {popupVisible && (
+                <div className="popupSair">
+                    <h1>Deseja realmente sair?</h1>
+                    <button onClick={handleConfirmLogout}>Sair</button>
+                    <button onClick={handleCancelLogout}>Cancelar</button>
+                </div>
+            )}
+            
+            {logado !== '' ? <button id="logout" onClick={handleLogoutClick}><img src={Logout}/></button> : null}
         </>
-    )
+    );
 }
 
-export default Header
+export default Header;

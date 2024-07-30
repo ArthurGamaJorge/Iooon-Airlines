@@ -1,68 +1,7 @@
-body {
-    background-color: var(--light);
-    color: black;
-    text-align: center;
-}
-
 #root, body, .Site{
   min-height: 100vh;
   position: relative;
 }
-
-.lista {
-    display: flex;
-  }
-  
-  .lista a {
-    font-size: 40px;
-    color: var(--principal-color);
-    margin-left: 50px;
-    font-weight: 700;
-    transition: all 0.55s ease-in-out;
-    border-bottom: transparent;
-    justify-content: center;
-  }
-
-  .Principal {
-    font-size: calc(3vmax + 20px);
-    font-weight: 1000;
-    color: var(--principal-color);
-  }
-
-  button{
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  #tema {
-    width: 40px;
-  }
-
-  #aHover:hover{
-  background-color: rgb(232, 232, 232);
-  filter: drop-shadow(5px 5px 5px var(--principal-color));
-}
-
-header {
-    background-color: var(--light);
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
-    filter: drop-shadow(0px 5px 5px var(--dark));
-  }
-
-#icone {
-  width: calc(3vmax + 20px);
-  height: auto;
-}
-
 
 ::-webkit-scrollbar {
     width: 20px;
@@ -110,7 +49,7 @@ header {
     filter: invert(65%) sepia(68%) saturate(2689%) hue-rotate(2deg) brightness(105%) contrast(106%);
   }
 
-  .card{
+  .cardViagem{
     border: 1px solid var(--light);
     background-color: var(--dark);
     width: 70%;
@@ -125,7 +64,7 @@ header {
     flex-wrap: wrap;
   }
 
-  .card h2, #info{
+  .cardViagem h2, #info{
     height: 30px;
     align-items: center;
     display: flex;
@@ -164,7 +103,7 @@ header {
     font-size: calc(0.7vmax + 7px);
   }
 
-  .card h2{
+  .cardViagem h2{
     font-size: calc(1vmax + 10px);
   }
 
@@ -189,91 +128,11 @@ header {
     .itinerarios{
       width: 100%;
     }
-    .card{
+    .cardViagem{
       width: 100%;
       gap: 5px;
     }
     #iconAviao{
       margin: 0;
-    }
-  }
-
-  #logout {
-    display: none;
-  }
-
-footer {
-    background-color: var(--principal-color);
-    color: var(--secondary-dark);
-    font-size: calc(0.5vmax + 10px);
-    display: flex;
-    padding: 5px 40px 5px 40px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  footer a {
-    color: var(--secondary-light);
-  }
-  
-  #creditos {
-    position: absolute;
-    right: 40px;
-  }
-
-
-.Dark-theme, .Dark-theme header {
-    background-color: var(--dark);
-    color: white;
-  }
-
-.Dark-theme header {
-    filter: drop-shadow(0px 3px 10px var(--light));
-  }
-
-  @media (max-width: 1040px) {
-     #IconeMenu {
-      display: block;
-    }
-     #seta {
-      display: none;
-    }
-      .lista {
-      position: absolute;
-      top: 100%;
-      right: -120%;
-      width: 300px;
-      height: 40vh;
-      display: flex;
-      padding: 50px 20px;
-      flex-direction: column;
-      align-items: center;
-      background: var(--light);
-      transition: all 0.55s ease;
-    }
-    .Dark-theme .lista{
-      background: var(--dark);
-    }
-     .lista a,
-      .lista button {
-      margin-left: 0;
-      display: block;
-      margin: 5px 0;
-    }
-    .lista.open {
-      right: 0;
-      height: 300px;
-      width: 200px;
-      border-radius: 30px;
-      border: solid 2px var(--secondary-light);
-      filter: drop-shadow(2px 2px 10px var(--secondary-light));
-    }
-     .Main {
-      grid-template-columns: repeat(1, 1fr);
-      height: auto;
-    }
-    #ImagemCentral {
-      margin: auto;
     }
   }

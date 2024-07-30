@@ -1,20 +1,16 @@
 import Airplane from '../assets/Airplane.png'
-import Seta from '../assets/Seta.png'
 
 function Hero(){
     return(
         <>
             <section className="Main">
 
-                <div>
+                <div class="info">
                     <span> <h1 id="IOOON">IOOON</h1><h1 id="Airlines">Airlines</h1> </span>
                     <p>A IOOON Airlines - A forma mais rápida e segura de ir a qualquer lugar! Cadastre-se e embarque para a melhor experiência da sua vida com a IOOON Airlines</p>
                 </div>
 
                 <img src={Airplane} id="ImagemCentral"/>
-
-                <img src={Seta} id="seta"/>
-
 
             </section>
 
