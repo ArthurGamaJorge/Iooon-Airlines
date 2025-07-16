@@ -102,7 +102,7 @@ function Conteudo() {
   }
 
   try {
-    const response = await axios.get('http://localhost:5000/api/flights', {
+    const response = await axios.get('https://iooon-airlines-backend.vercel.app/api/flights', {
       params: {
         departure_id: origemSelecionado.code,
         arrival_id: destinoSelecionado.code,
