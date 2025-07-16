@@ -41,7 +41,7 @@ body {
   }
   
   .lista a {
-    font-size: 40px;
+    font-size: 30px;
     color: var(--principal-color);
     margin-left: 50px;
     font-weight: 700;
@@ -53,7 +53,7 @@ body {
   .Principal {
     display: flex;
     align-items: center;
-    font-size: calc(3vmax + 20px);
+    font-size: calc(2vmax + 15px);
     font-weight: 1000;
     color: var(--principal-color);
   }
@@ -65,7 +65,7 @@ body {
   }
 
   #tema {
-    width: 40px;
+    width: 30px;
     margin-left: 50px;
   }
 
@@ -84,12 +84,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%;
+    padding: 20px 10%;
     filter: drop-shadow(0px 3px 10px var(--dark));
   }
 
   #icone {
-  width: calc(3vmax + 20px);
+  width: calc(2vmax + 15px);
   height: auto;
   margin-right: 10px;
 }
