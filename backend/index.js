@@ -21,6 +21,10 @@ app.use(cors({
 
 const API_KEY = process.env.SERPAPI_KEY;
 
+app.get('/', (req, res) => {
+  res.json({ message: 'API iooonAirlines está online!' });
+});
+
 app.get('/api/flights', async (req, res) => {
   try {
     const { departure_id, arrival_id, outbound_date } = req.query;
